@@ -1,0 +1,36 @@
+/* ========================================
+   Buttons
+======================================== */
+.btn {
+  display: inline-block;
+  padding: 14px 35px;
+  font-size: 14px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.btn-primary {
+  background: var(--gradient-button);
+  color: var(--bg-white);
+  border-color: var(--accent-color);
+}
+
+.btn-primary:hover {
+  background: transparent;
+  color: var(--accent-color);
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--accent-color);
+  border-color: var(--accent-color);
+}
+
+.btn-outline:hover {
+  background: var(--gradient-button);
+  color: var(--bg-white);
+}

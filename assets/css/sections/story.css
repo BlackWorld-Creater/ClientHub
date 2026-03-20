@@ -1,0 +1,37 @@
+/* ========================================
+   Story Section
+======================================== */
+.story {
+  padding: 100px 0;
+  background: var(--bg-white);
+}
+
+.story-content {
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.lead-text {
+  font-size: 20px;
+  line-height: 1.8;
+  color: var(--text-color);
+  margin-bottom: 30px;
+  font-weight: 300;
+}
+
+.signature-block {
+  margin-top: 40px;
+  font-family: var(--font-heading);
+  font-size: 24px;
+  color: var(--secondary-color);
+  position: relative;
+  display: inline-block;
+}
+
+.signature-block::before,
+.signature-block::after {
+  content: "—";
+  margin: 0 15px;
+  color: var(--border-color);
+}

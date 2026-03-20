@@ -1,0 +1,116 @@
+/* ========================================
+   Philosophy Section
+======================================== */
+.philosophy {
+  padding: 100px 0;
+  background: var(--bg-light);
+}
+
+.philosophy-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+}
+
+.philosophy-card {
+  background: var(--bg-white);
+  padding: 40px 30px;
+  text-align: center;
+  transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+  box-shadow: var(--shadow-light);
+  border: 1px solid transparent;
+  position: relative;
+  overflow: hidden;
+}
+
+.philosophy-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 0;
+  background: linear-gradient(
+    135deg,
+    var(--primary-color),
+    var(--accent-color)
+  );
+  transition: height 0.4s ease;
+  z-index: 0;
+  opacity: 0.05;
+}
+
+.philosophy-card:hover {
+  transform: translateY(-15px) scale(1.02);
+  border-color: var(--secondary-color);
+  box-shadow: var(--shadow-heavy);
+}
+
+.philosophy-card:hover::before {
+  height: 100%;
+}
+
+.philosophy-icon {
+  width: 80px;
+  height: 80px;
+  background: var(--secondary-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 25px;
+  clip-path: polygon(
+    50% 0%,
+    100% 25%,
+    100% 75%,
+    50% 100%,
+    0% 75%,
+    0% 25%
+  );
+  transition: var(--transition);
+  position: relative;
+  z-index: 1;
+}
+
+.philosophy-card:hover .philosophy-icon {
+  transform: rotate(180deg);
+  background: var(--gradient-button);;
+}
+
+.philosophy-icon i {
+  font-size: 32px;
+  color: var(--bg-white);
+  transition: var(--transition);
+}
+
+.philosophy-card:hover .philosophy-icon i {
+  transform: rotate(-180deg);
+}
+
+.philosophy-card h3 {
+  font-family: var(--font-heading);
+  font-size: 22px;
+  color: var(--primary-color);
+  margin-bottom: 15px;
+  position: relative;
+  z-index: 1;
+}
+
+.philosophy-card p {
+  font-size: 15px;
+  color: var(--text-light);
+  line-height: 1.7;
+  position: relative;
+  z-index: 1;
+}
+
+@media (max-width: 1024px) {
+  .philosophy-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .philosophy-grid {
+    grid-template-columns: 1fr;
+  }
+}

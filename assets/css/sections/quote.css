@@ -1,0 +1,51 @@
+/* ========================================
+   Quote Section
+======================================== */
+.quote-section {
+  padding: 100px 0;
+  background: var(--gradient-button);
+  color: var(--bg-white);
+  position: relative;
+  overflow: hidden;
+}
+
+.quote-section::before {
+  content: '"';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 300px;
+  font-family: var(--font-heading);
+  color: rgba(255, 255, 255, 0.05);
+  line-height: 1;
+}
+
+.quote-section blockquote {
+  font-family: var(--font-heading);
+  font-size: 32px;
+  font-style: italic;
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+.quote-section blockquote cite {
+  display: block;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--secondary-color);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-top: 20px;
+  font-style: normal;
+}
+
+@media (max-width: 480px) {
+  .quote-section blockquote {
+    font-size: 24px;
+  }
+}
+
