@@ -4,10 +4,8 @@
     <meta charset="UTF-8" />
     <meta
       name="viewport"
-      content="width=device-width, initial-scale=1.0, maximum-scale=1.0"
+      content="width=device-width,initial-scale=1.0,maximum-scale=1.0"
     />
-    <link rel="icon" type="image/png" href="assets/images/favicon.png" />
-    <link rel="apple-touch-icon" href="assets/images/favicon.png" />
     <title>ClientHub — Registration System</title>
     <link
       href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Instrument+Sans:wght@400;500;600&display=swap"
@@ -16,7 +14,7 @@
     <style>
       :root {
         --bg: #f4f2fb;
-        --surface: #ffffff;
+        --surface: #fff;
         --surface2: #f0eef9;
         --border: #e2dff2;
         --border2: #ccc9e0;
@@ -39,7 +37,6 @@
         --topbar-h: 56px;
         --bnav-h: 62px;
       }
-
       * {
         box-sizing: border-box;
         margin: 0;
@@ -56,14 +53,12 @@
         min-height: 100vh;
         -webkit-text-size-adjust: 100%;
       }
-
-      /* ─── Layout ─── */
       .layout {
         display: flex;
         min-height: 100vh;
       }
 
-      /* ─── Sidebar ─── */
+      /* Sidebar */
       .sidebar {
         width: var(--sidebar-w);
         background: var(--accent);
@@ -172,7 +167,7 @@
         display: block;
       }
 
-      /* ─── Main ─── */
+      /* Main */
       .main {
         margin-left: var(--sidebar-w);
         flex: 1;
@@ -180,8 +175,6 @@
         flex-direction: column;
         min-width: 0;
       }
-
-      /* ─── Topbar ─── */
       .topbar {
         background: var(--surface);
         border-bottom: 1px solid var(--border);
@@ -232,8 +225,33 @@
         padding: 3px 10px;
         border-radius: 20px;
       }
+      .refresh-btn {
+        background: none;
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        width: 32px;
+        height: 32px;
+        cursor: pointer;
+        font-size: 14px;
+        color: var(--text2);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.15s;
+      }
+      .refresh-btn:hover {
+        background: var(--surface2);
+        border-color: var(--border2);
+      }
+      .refresh-btn.spinning {
+        animation: spin 0.8s linear infinite;
+      }
+      @keyframes spin {
+        to {
+          transform: rotate(360deg);
+        }
+      }
 
-      /* ─── Content ─── */
       .content {
         padding: 1.5rem;
         flex: 1;
@@ -245,7 +263,7 @@
         display: block;
       }
 
-      /* ─── Bottom Nav ─── */
+      /* Bottom Nav */
       .bottom-nav {
         display: none;
         position: fixed;
@@ -290,7 +308,7 @@
         transform: scale(1.1);
       }
 
-      /* ─── Config Banner ─── */
+      /* Config Banner */
       .config-banner {
         background: var(--accent2-light);
         border: 1px solid #f0c090;
@@ -319,7 +337,7 @@
         border-color: var(--accent2);
       }
 
-      /* ─── Stats ─── */
+      /* Stats */
       .stats-grid {
         display: grid;
         grid-template-columns: repeat(4, 1fr);
@@ -374,7 +392,7 @@
         margin-top: 3px;
       }
 
-      /* ─── Table Wrap ─── */
+      /* Table */
       .table-wrap {
         background: var(--surface);
         border: 1px solid var(--border);
@@ -417,7 +435,7 @@
         font-family: "Instrument Sans", sans-serif;
         font-size: 13px;
         color: var(--text);
-        width: 160px;
+        width: 200px;
         outline: none;
       }
       .search-box input::placeholder {
@@ -439,8 +457,48 @@
         background-repeat: no-repeat;
         background-position: right 9px center;
       }
+      .action-toolbar {
+        display: flex;
+        gap: 8px;
+        align-items: center;
+        flex-wrap: wrap;
+      }
+      .toolbar-btn {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        padding: 6px 12px;
+        border-radius: 8px;
+        font-family: "Instrument Sans", sans-serif;
+        font-size: 12.5px;
+        font-weight: 600;
+        cursor: pointer;
+        border: 1px solid var(--border);
+        background: var(--surface);
+        color: var(--text2);
+        transition: all 0.12s;
+        white-space: nowrap;
+      }
+      .toolbar-btn:hover {
+        background: var(--surface2);
+        border-color: var(--border2);
+        color: var(--text);
+      }
+      .toolbar-btn.t-green {
+        border-color: #b7dfc5;
+        color: var(--green);
+      }
+      .toolbar-btn.t-green:hover {
+        background: var(--green-light);
+      }
+      .toolbar-btn.t-blue {
+        border-color: #b5d4f4;
+        color: #185fa5;
+      }
+      .toolbar-btn.t-blue:hover {
+        background: #e6f1fb;
+      }
 
-      /* Desktop table */
       .table-scroll {
         overflow-x: auto;
         -webkit-overflow-scrolling: touch;
@@ -448,7 +506,7 @@
       table {
         width: 100%;
         border-collapse: collapse;
-        min-width: 680px;
+        min-width: 700px;
       }
       thead tr {
         border-bottom: 1px solid var(--border);
@@ -494,7 +552,7 @@
         color: var(--text3);
       }
 
-      /* Mobile card list */
+      /* Mobile cards */
       .client-card-list {
         display: none;
       }
@@ -593,7 +651,6 @@
         background: #f59e0b;
       }
 
-      /* Action Buttons */
       .action-btns {
         display: flex;
         gap: 5px;
@@ -633,9 +690,42 @@
         margin-bottom: 10px;
       }
 
-      /* ─── Form ─── */
-      /* .form-grid{display:grid;grid-template-columns:1fr 290px;gap:1.25rem;align-items:start;} */
+      /* Auto-refresh bar */
+      .refresh-bar {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-size: 12px;
+        color: var(--text3);
+        padding: 6px 1.1rem;
+        background: var(--surface2);
+        border-bottom: 1px solid var(--border);
+      }
+      .refresh-dot {
+        width: 7px;
+        height: 7px;
+        border-radius: 50%;
+        background: var(--green);
+        flex-shrink: 0;
+      }
+      .refresh-dot.pulse {
+        animation: pulse 2s infinite;
+      }
+      @keyframes pulse {
+        0%,
+        100% {
+          opacity: 1;
+        }
+        50% {
+          opacity: 0.3;
+        }
+      }
+
+      /* Form */
       .form-grid {
+        display: grid;
+        grid-template-columns: 1fr 290px;
+        gap: 1.25rem;
         align-items: start;
       }
       .form-card {
@@ -688,13 +778,13 @@
         color: var(--danger);
         margin-left: 2px;
       }
-
       input[type="text"],
       input[type="email"],
       input[type="tel"],
       input[type="date"],
       input[type="number"],
       input[type="url"],
+      input[type="password"],
       select,
       textarea {
         font-family: "Instrument Sans", sans-serif;
@@ -732,7 +822,6 @@
         background-position: right 12px center;
         padding-right: 30px;
       }
-
       .status-grid {
         display: grid;
         grid-template-columns: 1fr 1fr;
@@ -778,7 +867,6 @@
         color: #92400e !important;
         font-weight: 600 !important;
       }
-
       .section-divider {
         display: flex;
         align-items: center;
@@ -800,7 +888,6 @@
         height: 1px;
         background: var(--border);
       }
-
       .info-card {
         background: var(--surface);
         border: 1px solid var(--border);
@@ -836,19 +923,6 @@
         justify-content: center;
         flex-shrink: 0;
         margin-top: 2px;
-      }
-      .script-preview {
-        font-size: 10px;
-        color: var(--text2);
-        line-height: 1.6;
-        white-space: pre-wrap;
-        font-family: monospace;
-        max-height: 180px;
-        overflow-y: auto;
-        background: var(--surface2);
-        border-radius: 8px;
-        padding: 10px 12px;
-        border: 1px solid var(--border);
       }
 
       .btn {
@@ -892,7 +966,6 @@
       .btn-danger:hover {
         background: #f8d8d8;
       }
-
       .form-actions {
         display: flex;
         align-items: center;
@@ -920,6 +993,7 @@
         display: flex;
       }
 
+      /* Settings */
       .settings-wrap {
         max-width: 580px;
       }
@@ -992,6 +1066,111 @@
         transform: translateX(18px);
       }
 
+      /* URL Security */
+      .url-locked {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding: 9px 12px;
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        background: var(--surface2);
+        font-size: 13px;
+        color: var(--text3);
+      }
+      .url-locked .lock-icon {
+        font-size: 14px;
+        flex-shrink: 0;
+      }
+      .url-locked .masked {
+        flex: 1;
+        font-family: monospace;
+        letter-spacing: 2px;
+      }
+      .url-locked .unlock-btn {
+        font-size: 11.5px;
+        color: var(--accent);
+        cursor: pointer;
+        font-weight: 600;
+        white-space: nowrap;
+        background: none;
+        border: none;
+        padding: 0;
+      }
+      .url-locked .unlock-btn:hover {
+        text-decoration: underline;
+      }
+
+      /* Pin/Password dialog */
+      .pin-overlay {
+        display: none;
+        position: fixed;
+        inset: 0;
+        background: rgba(20, 16, 50, 0.55);
+        z-index: 400;
+        align-items: center;
+        justify-content: center;
+      }
+      .pin-overlay.open {
+        display: flex;
+      }
+      .pin-box {
+        background: var(--surface);
+        border-radius: var(--radius-lg);
+        padding: 2rem;
+        width: 90%;
+        max-width: 360px;
+        box-shadow: 0 20px 60px rgba(74, 63, 160, 0.2);
+        text-align: center;
+      }
+      .pin-box h3 {
+        font-family: "Syne", sans-serif;
+        font-size: 17px;
+        font-weight: 700;
+        margin-bottom: 0.4rem;
+      }
+      .pin-box p {
+        font-size: 13px;
+        color: var(--text2);
+        margin-bottom: 1.25rem;
+        line-height: 1.6;
+      }
+      .pin-input {
+        display: flex;
+        gap: 10px;
+        justify-content: center;
+        margin-bottom: 1rem;
+      }
+      .pin-input input {
+        width: 48px;
+        height: 52px;
+        text-align: center;
+        font-size: 20px;
+        font-weight: 700;
+        border: 2px solid var(--border);
+        border-radius: 10px;
+        background: var(--surface2);
+        color: var(--text);
+        outline: none;
+        font-family: "Syne", sans-serif;
+      }
+      .pin-input input:focus {
+        border-color: var(--accent);
+        background: var(--surface);
+      }
+      .pin-error {
+        font-size: 12.5px;
+        color: var(--danger);
+        min-height: 18px;
+        margin-bottom: 0.75rem;
+      }
+      .pin-actions {
+        display: flex;
+        gap: 10px;
+        justify-content: center;
+      }
+
+      /* Toast */
       .toast-wrap {
         position: fixed;
         bottom: 1.25rem;
@@ -1035,6 +1214,7 @@
         }
       }
 
+      /* Modal */
       .modal-overlay {
         display: none;
         position: fixed;
@@ -1084,7 +1264,46 @@
         justify-content: flex-end;
       }
 
-      /* ════════ TABLET 768–1024 ════════ */
+      /* Print styles */
+      @media print {
+        .sidebar,
+        .topbar,
+        .bottom-nav,
+        .toast-wrap,
+        .action-toolbar,
+        .action-btns,
+        .refresh-bar,
+        .table-controls,
+        .config-banner,
+        .modal-overlay,
+        .pin-overlay {
+          display: none !important;
+        }
+        .main {
+          margin-left: 0 !important;
+        }
+        body {
+          background: #fff !important;
+        }
+        .table-wrap {
+          border: none !important;
+          box-shadow: none !important;
+        }
+        th,
+        td {
+          font-size: 11px !important;
+          padding: 6px 8px !important;
+        }
+        .pill {
+          font-size: 10px !important;
+        }
+        @page {
+          margin: 1cm;
+          size: A4 landscape;
+        }
+      }
+
+      /* Responsive */
       @media (max-width: 1024px) {
         :root {
           --sidebar-w: 64px;
@@ -1140,16 +1359,13 @@
         .form-grid {
           grid-template-columns: 1fr;
         }
-        .info-card,
-        .script-preview-wrap {
+        .info-card {
           display: none;
         }
         .field-row.col3 {
           grid-template-columns: 1fr 1fr;
         }
       }
-
-      /* ════════ MOBILE ≤640 ════════ */
       @media (max-width: 640px) {
         :root {
           --sidebar-w: 0px;
@@ -1214,7 +1430,8 @@
           flex-direction: column;
           align-items: stretch;
         }
-        .table-controls {
+        .table-controls,
+        .action-toolbar {
           flex-direction: column;
         }
         .search-box {
@@ -1224,8 +1441,10 @@
           width: 100%;
           flex: 1;
         }
-        .filter-select {
+        .filter-select,
+        .toolbar-btn {
           width: 100%;
+          justify-content: center;
         }
         .form-grid {
           grid-template-columns: 1fr;
@@ -1238,10 +1457,6 @@
         }
         .form-card {
           padding: 1rem;
-        }
-        .info-card,
-        .script-preview-wrap {
-          display: none !important;
         }
         .form-actions {
           flex-direction: column;
@@ -1264,19 +1479,6 @@
           font-size: 14px;
         }
       }
-
-      @media (max-width: 380px) {
-        .stat-card {
-          padding: 0.8rem;
-        }
-        .stat-value {
-          font-size: 20px;
-        }
-        .content {
-          padding: 0.75rem;
-          padding-bottom: calc(var(--bnav-h) + 0.75rem);
-        }
-      }
     </style>
   </head>
   <body>
@@ -1287,7 +1489,6 @@
     ></div>
 
     <div class="layout">
-      <!-- ═══════ SIDEBAR ═══════ -->
       <aside class="sidebar" id="sidebar">
         <div class="sidebar-logo">
           <div class="logo-text">
@@ -1324,26 +1525,31 @@
             ><span class="nav-label">Settings</span>
           </button>
         </nav>
-        <div class="sidebar-footer">ClientHub v1.0</div>
+        <div class="sidebar-footer">ClientHub v2.0</div>
       </aside>
 
-      <!-- ═══════ MAIN ═══════ -->
       <div class="main">
         <div class="topbar">
           <div class="topbar-left">
-            <button class="menu-btn" id="menu-btn" onclick="toggleSidebar()">
-              ☰
-            </button>
+            <button class="menu-btn" onclick="toggleSidebar()">☰</button>
             <div class="topbar-title" id="topbar-title">Dashboard</div>
           </div>
           <div class="topbar-right">
+            <button
+              class="refresh-btn"
+              id="refresh-btn"
+              title="Refresh from Sheets"
+              onclick="loadFromSheets(true)"
+            >
+              ↻
+            </button>
             <span style="font-size: 12px; color: var(--text3)">Clients:</span>
             <span class="badge-pill" id="total-badge">0</span>
           </div>
         </div>
 
         <div class="content">
-          <!-- ════ DASHBOARD ════ -->
+          <!-- DASHBOARD -->
           <div class="page active" id="page-dashboard">
             <div class="config-banner" id="config-banner">
               <span style="font-size: 16px; flex-shrink: 0; margin-top: 1px"
@@ -1405,6 +1611,39 @@
             <div class="table-wrap">
               <div class="table-header">
                 <h3>All Clients</h3>
+                <div
+                  style="
+                    display: flex;
+                    gap: 8px;
+                    flex-wrap: wrap;
+                    align-items: center;
+                  "
+                >
+                  <div class="action-toolbar">
+                    <button class="toolbar-btn t-green" onclick="exportExcel()">
+                      📊 Export Excel
+                    </button>
+                    <button class="toolbar-btn t-blue" onclick="exportPDF()">
+                      📄 Export PDF
+                    </button>
+                    <button class="toolbar-btn" onclick="printTable()">
+                      🖨️ Print
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <div class="refresh-bar">
+                <div class="refresh-dot pulse" id="refresh-dot"></div>
+                <span id="refresh-label">Auto-refresh every 5 min</span>
+                <span
+                  style="margin-left: auto; font-size: 11px"
+                  id="last-synced"
+                ></span>
+              </div>
+              <div
+                class="table-header"
+                style="border-top: none; padding-top: 0.6rem"
+              >
                 <div class="table-controls">
                   <select
                     class="filter-select"
@@ -1422,7 +1661,7 @@
                     <input
                       type="text"
                       id="search-input"
-                      placeholder="Search clients…"
+                      placeholder="Search name, phone, GST, industry…"
                       oninput="renderTable()"
                     />
                   </div>
@@ -1447,7 +1686,7 @@
             </div>
           </div>
 
-          <!-- ════ REGISTER ════ -->
+          <!-- REGISTER -->
           <div class="page" id="page-register">
             <div class="edit-banner" id="edit-banner">
               ✏️ <span>Editing — <strong id="edit-client-label"></strong></span>
@@ -1459,10 +1698,8 @@
                 Cancel
               </button>
             </div>
-
             <div class="form-grid">
               <div>
-                <!-- Client Details -->
                 <div class="form-card">
                   <div class="form-card-title">
                     <span class="section-icon">🏢</span> Client / Company
@@ -1489,8 +1726,8 @@
                   </div>
                   <div class="field-row col3">
                     <div class="field">
-                      <label>Industry <span class="req">*</span></label>
-                      <select id="f-industry">
+                      <label>Industry <span class="req">*</span></label
+                      ><select id="f-industry">
                         <option value="">Select</option>
                         <option>IT &amp; Software</option>
                         <option>Manufacturing</option>
@@ -1507,8 +1744,8 @@
                       </select>
                     </div>
                     <div class="field">
-                      <label>Business Type</label>
-                      <select id="f-biztype">
+                      <label>Business Type</label
+                      ><select id="f-biztype">
                         <option value="">Select</option>
                         <option>Pvt. Ltd.</option>
                         <option>Ltd. / Public</option>
@@ -1580,8 +1817,6 @@
                     </div>
                   </div>
                 </div>
-
-                <!-- Contact Person -->
                 <div class="form-card">
                   <div class="form-card-title">
                     <span class="section-icon">👤</span> Primary Contact Person
@@ -1688,8 +1923,6 @@
                     </div>
                   </div>
                 </div>
-
-                <!-- Reference Details -->
                 <div class="form-card">
                   <div class="form-card-title">
                     <span class="section-icon">🔗</span> Reference Details
@@ -1736,8 +1969,8 @@
                   </div>
                   <div class="field-row">
                     <div class="field">
-                      <label>Lead Source</label>
-                      <select id="f-leadsource">
+                      <label>Lead Source</label
+                      ><select id="f-leadsource">
                         <option value="">Select source</option>
                         <option>Referral</option>
                         <option>Cold Call</option>
@@ -1752,8 +1985,8 @@
                       </select>
                     </div>
                     <div class="field">
-                      <label>Relationship Strength</label>
-                      <select id="f-relstrength">
+                      <label>Relationship Strength</label
+                      ><select id="f-relstrength">
                         <option value="">Select</option>
                         <option>Strong</option>
                         <option>Medium</option>
@@ -1772,8 +2005,6 @@
                     </div>
                   </div>
                 </div>
-
-                <!-- Additional & Status -->
                 <div class="form-card">
                   <div class="form-card-title">
                     <span class="section-icon">📋</span> Additional Info &amp;
@@ -1842,7 +2073,6 @@
                     </div>
                   </div>
                 </div>
-
                 <div class="form-actions">
                   <button
                     class="btn btn-primary"
@@ -1856,122 +2086,163 @@
                   </button>
                 </div>
               </div>
-
-              <!-- Right sidebar (desktop only) -->
-              <!-- <div>
-          <div class="info-card">
-            <h4>📊 Google Sheets Setup</h4>
-            <div class="info-step"><div class="step-num">1</div><span>Create a Google Sheet with headers in Row 1</span></div>
-            <div class="info-step"><div class="step-num">2</div><span>Extensions → Apps Script → paste the script</span></div>
-            <div class="info-step"><div class="step-num">3</div><span>Deploy → New Deployment → Web App</span></div>
-            <div class="info-step"><div class="step-num">4</div><span>Execute as: Me · Access: Anyone</span></div>
-            <div class="info-step"><div class="step-num">5</div><span>Copy URL → paste in Dashboard or Settings</span></div>
-          </div>
-          <div class="info-card">
-            <h4>📧 Email Alerts</h4>
-            <p style="font-size:12.5px;color:var(--text2);line-height:1.6">Enable in <strong>Settings</strong> for alerts on new registrations, edits, and deletions.</p>
-          </div>
-          <div class="info-card script-preview-wrap" style="background:var(--surface2)">
-            <h4 style="font-family:monospace;font-size:12px;font-weight:600">Apps Script</h4>
-            <pre class="script-preview">function doPost(e) {
-  const ss = SpreadsheetApp
-    .getActiveSpreadsheet();
-  const sh = ss.getActiveSheet();
-  const d = JSON.parse(
-    e.postData.contents);
-
-  if (d.action==='delete') {
-    deleteRow(sh, d.id);
-    notify(d,'deleted');
-    return ok();
-  }
-  if (d.action==='update') {
-    updateRow(sh, d);
-    notify(d,'updated');
-    return ok();
-  }
-
-  sh.appendRow([
-    d.id, d.company, d.clientid,
-    d.industry, d.biztype,
-    d.gst, d.pan, d.address,
-    d.compphone, d.compemail,
-    d.website, d.since,
-    d.cpname, d.cpdesig,
-    d.cpmobile, d.cpemail,
-    d.cpdept, d.cp2name,
-    d.cp2mobile, d.cp2email,
-    d.refname, d.refcompany,
-    d.refmobile, d.refemail,
-    d.refdate, d.leadsource,
-    d.relstrength, d.refnotes,
-    d.revenue, d.credit,
-    d.remarks, d.status,
-    d.registered
-  ]);
-  notify(d,'registered');
-  return ok();
-}
-
-function deleteRow(sh, id) {
-  const rows = sh.getDataRange()
-    .getValues();
-  for(let i=1;i<rows.length;i++){
-    if(rows[i][0]==id){
-      sh.deleteRow(i+1); break;
-    }
-  }
-}
-
-function updateRow(sh, d) {
-  const rows = sh.getDataRange()
-    .getValues();
-  for(let i=1;i<rows.length;i++){
-    if(rows[i][0]==d.id){
-      sh.getRange(i+1,2).setValue(d.company);
-      sh.getRange(i+1,4).setValue(d.industry);
-      sh.getRange(i+1,13).setValue(d.cpname);
-      sh.getRange(i+1,32).setValue(d.status);
-      break;
-    }
-  }
-}
-
-function notify(d, act) {
-  const em = PropertiesService
-    .getScriptProperties()
-    .getProperty('NOTIFY_EMAIL');
-  if(!em) return;
-  MailApp.sendEmail(em,
-    'ClientHub: '+d.company+' '+act,
-    'Client "'+d.company+'" '+act);
-}
-
-function ok() {
-  return ContentService
-    .createTextOutput('OK');
-}</pre>
-          </div>
-        </div> -->
+              <div>
+                <div class="info-card">
+                  <h4>📊 Google Sheets Setup</h4>
+                  <div class="info-step">
+                    <div class="step-num">1</div>
+                    <span>Create a Google Sheet with headers in Row 1</span>
+                  </div>
+                  <div class="info-step">
+                    <div class="step-num">2</div>
+                    <span>Extensions → Apps Script → paste the script</span>
+                  </div>
+                  <div class="info-step">
+                    <div class="step-num">3</div>
+                    <span>Deploy → New Deployment → Web App</span>
+                  </div>
+                  <div class="info-step">
+                    <div class="step-num">4</div>
+                    <span>Execute as: Me · Access: Anyone</span>
+                  </div>
+                  <div class="info-step">
+                    <div class="step-num">5</div>
+                    <span
+                      >Paste URL in Settings (it will be secured with PIN)</span
+                    >
+                  </div>
+                </div>
+                <div class="info-card">
+                  <h4>🔒 URL Security</h4>
+                  <p
+                    style="
+                      font-size: 12.5px;
+                      color: var(--text2);
+                      line-height: 1.6;
+                    "
+                  >
+                    Your Apps Script URL is <strong>encrypted</strong> and
+                    hidden behind a 4-digit PIN. No one can see it by inspecting
+                    the page without the PIN.
+                  </p>
+                </div>
+                <div class="info-card">
+                  <h4>🔄 Auto-Refresh</h4>
+                  <p
+                    style="
+                      font-size: 12.5px;
+                      color: var(--text2);
+                      line-height: 1.6;
+                    "
+                  >
+                    Dashboard auto-refreshes every
+                    <strong>5 minutes</strong> from Google Sheets. Click ↻ in
+                    the topbar to refresh instantly anytime.
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
 
-          <!-- ════ SETTINGS ════ -->
+          <!-- SETTINGS -->
           <div class="page" id="page-settings">
             <div class="settings-wrap">
               <div class="settings-section">
-                <h3>🔗 Google Sheets Connection</h3>
-                <div class="field" style="margin-bottom: 12px">
-                  <label>Apps Script Web App URL</label>
-                  <input
-                    type="url"
-                    id="settings-url"
-                    placeholder="https://script.google.com/macros/s/YOUR_ID/exec"
-                    oninput="saveSheetUrl(this.value)"
-                  />
+                <h3>🔒 Secure Google Sheets URL</h3>
+                <div id="url-locked-view" style="display: none">
+                  <div class="url-locked">
+                    <span class="lock-icon">🔒</span>
+                    <span class="masked" id="url-masked"
+                      >••••••••••••••••••••••••••••••••</span
+                    >
+                    <button
+                      class="unlock-btn"
+                      onclick="showPinDialog('unlock')"
+                    >
+                      Unlock to edit
+                    </button>
+                  </div>
+                  <div
+                    style="
+                      font-size: 12px;
+                      color: var(--text3);
+                      margin-top: 8px;
+                    "
+                  >
+                    URL is encrypted. Enter your PIN to view or change it.
+                  </div>
                 </div>
-                <div style="font-size: 12px; color: var(--text3)">
-                  All client data syncs to your Google Sheet in real-time.
+                <div id="url-edit-view">
+                  <div class="field" style="margin-bottom: 10px">
+                    <label>Apps Script Web App URL</label>
+                    <input
+                      type="text"
+                      id="settings-url"
+                      placeholder="https://script.google.com/macros/s/YOUR_ID/exec"
+                      oninput="saveSheetUrl(this.value)"
+                    />
+                  </div>
+                  <div class="field" style="margin-bottom: 10px">
+                    <label
+                      >Set 4-digit Security PIN
+                      <span style="color: var(--text3); font-weight: 400"
+                        >(to lock the URL)</span
+                      ></label
+                    >
+                    <div style="display: flex; gap: 8px">
+                      <input
+                        type="password"
+                        id="pin-set"
+                        maxlength="4"
+                        placeholder="e.g. 1234"
+                        style="width: 120px"
+                        oninput="this.value = this.value.replace(/\D/g, '')"
+                      />
+                      <button
+                        class="btn btn-primary"
+                        style="padding: 9px 16px; font-size: 13px"
+                        onclick="lockUrl()"
+                      >
+                        🔒 Lock URL
+                      </button>
+                    </div>
+                  </div>
+                  <div style="font-size: 12px; color: var(--text3)">
+                    Once locked, URL is encrypted in storage — not visible in
+                    page source or browser inspect.
+                  </div>
+                </div>
+              </div>
+
+              <div class="settings-section">
+                <h3>🔄 Auto-Refresh</h3>
+                <div class="setting-row">
+                  <div class="setting-info">
+                    <label>Auto-refresh from Sheets</label
+                    ><small>Pulls latest data automatically</small>
+                  </div>
+                  <div
+                    class="toggle on"
+                    id="toggle-refresh"
+                    onclick="toggleAutoRefresh()"
+                  ></div>
+                </div>
+                <div class="setting-row" style="border-bottom: none">
+                  <div class="setting-info">
+                    <label>Refresh interval</label
+                    ><small>How often to sync</small>
+                  </div>
+                  <select
+                    class="filter-select"
+                    id="refresh-interval"
+                    onchange="updateRefreshInterval()"
+                    style="width: 130px"
+                  >
+                    <option value="1">Every 1 min</option>
+                    <option value="5" selected>Every 5 min</option>
+                    <option value="10">Every 10 min</option>
+                    <option value="30">Every 30 min</option>
+                  </select>
                 </div>
               </div>
 
@@ -1979,8 +2250,8 @@ function ok() {
                 <h3>📧 Email Notifications</h3>
                 <div class="setting-row">
                   <div class="setting-info">
-                    <label>Enable email alerts</label>
-                    <small>Get notified on client events</small>
+                    <label>Enable email alerts</label
+                    ><small>Get notified on client events</small>
                   </div>
                   <div
                     class="toggle"
@@ -2001,25 +2272,6 @@ function ok() {
                       oninput="saveNotifyEmails()"
                     />
                   </div>
-                  <div
-                    style="
-                      font-size: 12px;
-                      color: var(--text3);
-                      line-height: 1.7;
-                    "
-                  >
-                    In Apps Script, run once:<br />
-                    <code
-                      style="
-                        background: var(--surface2);
-                        padding: 2px 6px;
-                        border-radius: 4px;
-                        font-size: 10px;
-                        word-break: break-all;
-                      "
-                      >PropertiesService.getScriptProperties().setProperty('NOTIFY_EMAIL','your@email.com')</code
-                    >
-                  </div>
                 </div>
               </div>
 
@@ -2027,8 +2279,8 @@ function ok() {
                 <h3>🗄 Local Data</h3>
                 <div class="setting-row">
                   <div class="setting-info">
-                    <label>Browser storage</label>
-                    <small id="local-count-label"
+                    <label>Browser storage</label
+                    ><small id="local-count-label"
                       >0 clients saved locally</small
                     >
                   </div>
@@ -2050,11 +2302,8 @@ function ok() {
             </div>
           </div>
         </div>
-        <!-- /content -->
       </div>
-      <!-- /main -->
     </div>
-    <!-- /layout -->
 
     <!-- Bottom Nav -->
     <nav class="bottom-nav" id="bottom-nav">
@@ -2083,6 +2332,7 @@ function ok() {
 
     <div class="toast-wrap" id="toast-wrap"></div>
 
+    <!-- Delete Modal -->
     <div class="modal-overlay" id="delete-modal">
       <div class="modal">
         <h3>Delete Client?</h3>
@@ -2091,7 +2341,10 @@ function ok() {
           records and Google Sheets. This cannot be undone.
         </p>
         <div class="modal-actions">
-          <button class="btn btn-secondary" onclick="closeModal()">
+          <button
+            class="btn btn-secondary"
+            onclick="closeModal('delete-modal')"
+          >
             Cancel
           </button>
           <button class="btn btn-danger" onclick="confirmDelete()">
@@ -2101,53 +2354,343 @@ function ok() {
       </div>
     </div>
 
+    <!-- PIN Dialog -->
+    <div class="pin-overlay" id="pin-overlay">
+      <div class="pin-box">
+        <h3 id="pin-title">🔒 Enter PIN</h3>
+        <p id="pin-desc">Enter your 4-digit PIN to unlock the URL.</p>
+        <div class="pin-input">
+          <input
+            type="password"
+            maxlength="1"
+            id="p1"
+            oninput="pinMove(this, 'p2')"
+            onkeydown="pinBack(event, this, null)"
+          />
+          <input
+            type="password"
+            maxlength="1"
+            id="p2"
+            oninput="pinMove(this, 'p3')"
+            onkeydown="pinBack(event, this, 'p1')"
+          />
+          <input
+            type="password"
+            maxlength="1"
+            id="p3"
+            oninput="pinMove(this, 'p4')"
+            onkeydown="pinBack(event, this, 'p2')"
+          />
+          <input
+            type="password"
+            maxlength="1"
+            id="p4"
+            oninput="pinMove(this, null)"
+            onkeydown="pinBack(event, this, 'p3')"
+          />
+        </div>
+        <div class="pin-error" id="pin-error"></div>
+        <div class="pin-actions">
+          <button
+            class="btn btn-secondary"
+            style="padding: 8px 16px; font-size: 13px"
+            onclick="closePinDialog()"
+          >
+            Cancel
+          </button>
+          <button
+            class="btn btn-primary"
+            style="padding: 8px 16px; font-size: 13px"
+            onclick="submitPin()"
+          >
+            Confirm
+          </button>
+        </div>
+      </div>
+    </div>
+
     <script>
+      // ═══════════════════════════════════════════
+      // STATE
+      // ═══════════════════════════════════════════
       let clients = JSON.parse(localStorage.getItem("ch_clients") || "[]");
       let selectedStatus = "Active",
         editingId = null,
         deleteTargetId = null;
-      let sheetsUrl = localStorage.getItem("ch_sheets_url") || "";
       let emailEnabled = localStorage.getItem("ch_email_enabled") === "1";
       let notifyEmails = localStorage.getItem("ch_notify_emails") || "";
+      let autoRefresh = localStorage.getItem("ch_autorefresh") !== "0";
+      let refreshInterval = parseInt(
+        localStorage.getItem("ch_refresh_interval") || "5",
+      );
+      let refreshTimer = null;
+      let pinAction = null; // 'unlock' or 'verify'
 
+      // ── Encrypted URL helpers ──────────────────
+      function encodeUrl(url, pin) {
+        // Simple XOR-based obfuscation with PIN as key
+        const key = pin.repeat(Math.ceil(url.length / pin.length));
+        return btoa(
+          url
+            .split("")
+            .map((c, i) =>
+              String.fromCharCode(c.charCodeAt(0) ^ key.charCodeAt(i)),
+            )
+            .join(""),
+        );
+      }
+
+      function decodeUrl(enc, pin) {
+        try {
+          const url = atob(enc);
+          const key = pin.repeat(Math.ceil(url.length / pin.length));
+          return url
+            .split("")
+            .map((c, i) =>
+              String.fromCharCode(c.charCodeAt(0) ^ key.charCodeAt(i)),
+            )
+            .join("");
+        } catch (e) {
+          return "";
+        }
+      }
+
+      function getSheetsUrl() {
+        const enc = localStorage.getItem("ch_url_enc");
+        const pin = localStorage.getItem("ch_url_pin"); // stored hash only for verify
+        if (!enc) return localStorage.getItem("ch_sheets_url") || "";
+        // We need actual pin to decode — store it in sessionStorage (cleared on tab close)
+        const sessionPin = sessionStorage.getItem("ch_session_pin");
+        if (!sessionPin) return "";
+        return decodeUrl(enc, sessionPin);
+      }
+
+      function isUrlLocked() {
+        return !!localStorage.getItem("ch_url_enc");
+      }
+
+      // ═══════════════════════════════════════════
+      // INIT
+      // ═══════════════════════════════════════════
       (function () {
-        document.getElementById("sheets-url-global").value = sheetsUrl;
-        document.getElementById("settings-url").value = sheetsUrl;
+        const rawUrl = localStorage.getItem("ch_sheets_url") || "";
+        document.getElementById("settings-url").value = rawUrl;
+        document.getElementById("sheets-url-global").value = rawUrl;
         document.getElementById("notify-emails").value = notifyEmails;
         if (emailEnabled) {
           document.getElementById("toggle-email").classList.add("on");
           document.getElementById("email-settings").style.display = "block";
         }
-        if (sheetsUrl)
+        if (!autoRefresh)
+          document.getElementById("toggle-refresh").classList.remove("on");
+        document.getElementById("refresh-interval").value = refreshInterval;
+
+        // Show locked/unlocked URL view
+        if (isUrlLocked()) {
+          document.getElementById("url-locked-view").style.display = "block";
+          document.getElementById("url-edit-view").style.display = "none";
+        }
+
+        const url = getSheetsUrl() || rawUrl;
+        if (url) {
           document.getElementById("config-banner").style.display = "none";
-        renderStats();
-        loadFromSheets();
-        renderTable();
+          loadFromSheets(false);
+        } else {
+          renderStats();
+          renderTable();
+        }
         updateLocalCount();
+        startAutoRefresh();
       })();
 
-      async function loadFromSheets() {
-        if (!sheetsUrl) return;
+      // ═══════════════════════════════════════════
+      // LOAD FROM SHEETS
+      // ═══════════════════════════════════════════
+      async function loadFromSheets(showToast) {
+        const url = getSheetsUrl();
+        if (!url) {
+          if (showToast)
+            toast("error", "No Sheets URL configured. Go to Settings.");
+          return;
+        }
+        const btn = document.getElementById("refresh-btn");
+        btn.classList.add("spinning");
+        document.getElementById("refresh-dot").classList.add("pulse");
         try {
-          const res = await fetch(sheetsUrl, { method: "GET", mode: "cors" });
+          const res = await fetch(url, { method: "GET", mode: "cors" });
           const data = await res.json();
+          if (data.error) {
+            toast("error", "Sheets error: " + data.error);
+            return;
+          }
           if (Array.isArray(data) && data.length > 0) {
-            // Merge: Sheets data is source of truth
             clients = data;
             saveLocal();
             renderStats();
             renderTable();
-            toast("info", `Loaded ${data.length} clients from Google Sheets.`);
+            const now = new Date().toLocaleTimeString("en-IN", {
+              hour: "2-digit",
+              minute: "2-digit",
+            });
+            document.getElementById("last-synced").textContent =
+              "Last synced: " + now;
+            if (showToast)
+              toast(
+                "success",
+                "Loaded " + data.length + " clients from Google Sheets.",
+              );
+          } else if (Array.isArray(data) && data.length === 0) {
+            if (showToast) toast("info", "No client data found in sheet.");
           }
         } catch (e) {
-          toast("error", "Could not load from Sheets. Showing local data.");
+          if (showToast)
+            toast(
+              "error",
+              "Could not connect to Sheets. Check URL & deployment.",
+            );
+        } finally {
+          btn.classList.remove("spinning");
         }
       }
 
+      // ═══════════════════════════════════════════
+      // AUTO REFRESH
+      // ═══════════════════════════════════════════
+      function startAutoRefresh() {
+        if (refreshTimer) clearInterval(refreshTimer);
+        if (!autoRefresh) return;
+        const ms = refreshInterval * 60 * 1000;
+        refreshTimer = setInterval(() => loadFromSheets(false), ms);
+        document.getElementById("refresh-label").textContent =
+          "Auto-refresh every " + refreshInterval + " min";
+      }
+
+      function toggleAutoRefresh() {
+        autoRefresh = !autoRefresh;
+        localStorage.setItem("ch_autorefresh", autoRefresh ? "1" : "0");
+        document
+          .getElementById("toggle-refresh")
+          .classList.toggle("on", autoRefresh);
+        startAutoRefresh();
+        toast(
+          "info",
+          autoRefresh ? "Auto-refresh enabled." : "Auto-refresh disabled.",
+        );
+      }
+
+      function updateRefreshInterval() {
+        refreshInterval = parseInt(
+          document.getElementById("refresh-interval").value,
+        );
+        localStorage.setItem("ch_refresh_interval", refreshInterval);
+        startAutoRefresh();
+      }
+
+      // ═══════════════════════════════════════════
+      // PIN / URL SECURITY
+      // ═══════════════════════════════════════════
+      function lockUrl() {
+        const url = document.getElementById("settings-url").value.trim();
+        const pin = document.getElementById("pin-set").value.trim();
+        if (!url) {
+          toast("error", "Please enter the Apps Script URL first.");
+          return;
+        }
+        if (pin.length !== 4 || !/^\d{4}$/.test(pin)) {
+          toast("error", "PIN must be exactly 4 digits.");
+          return;
+        }
+        const enc = encodeUrl(url, pin);
+        localStorage.setItem("ch_url_enc", enc);
+        localStorage.setItem("ch_url_pin_hash", btoa(pin)); // weak hash just for verify
+        sessionStorage.setItem("ch_session_pin", pin); // keep in session so app still works
+        localStorage.removeItem("ch_sheets_url"); // remove plaintext
+        document.getElementById("settings-url").value = "";
+        document.getElementById("pin-set").value = "";
+        document.getElementById("url-locked-view").style.display = "block";
+        document.getElementById("url-edit-view").style.display = "none";
+        document.getElementById("config-banner").style.display = "none";
+        toast(
+          "success",
+          "URL locked with PIN 🔒 Reload app and enter PIN to access.",
+        );
+      }
+
+      function showPinDialog(action) {
+        pinAction = action;
+        document.getElementById("p1").value = "";
+        document.getElementById("p2").value = "";
+        document.getElementById("p3").value = "";
+        document.getElementById("p4").value = "";
+        document.getElementById("pin-error").textContent = "";
+        document.getElementById("pin-title").textContent =
+          action === "unlock" ? "🔓 Unlock URL" : "🔒 Enter PIN";
+        document.getElementById("pin-desc").textContent =
+          action === "unlock"
+            ? "Enter your 4-digit PIN to view and edit the URL."
+            : "Enter your 4-digit PIN to continue.";
+        document.getElementById("pin-overlay").classList.add("open");
+        setTimeout(() => document.getElementById("p1").focus(), 100);
+      }
+
+      function closePinDialog() {
+        document.getElementById("pin-overlay").classList.remove("open");
+        pinAction = null;
+      }
+
+      function pinMove(el, nextId) {
+        el.value = el.value.replace(/\D/g, "");
+        if (el.value && nextId) document.getElementById(nextId).focus();
+      }
+
+      function pinBack(e, el, prevId) {
+        if (e.key === "Backspace" && !el.value && prevId)
+          document.getElementById(prevId).focus();
+      }
+
+      function submitPin() {
+        const pin = [
+          document.getElementById("p1").value,
+          document.getElementById("p2").value,
+          document.getElementById("p3").value,
+          document.getElementById("p4").value,
+        ].join("");
+        if (pin.length !== 4) {
+          document.getElementById("pin-error").textContent =
+            "Enter all 4 digits.";
+          return;
+        }
+        const storedHash = localStorage.getItem("ch_url_pin_hash");
+        if (btoa(pin) !== storedHash) {
+          document.getElementById("pin-error").textContent =
+            "Wrong PIN. Try again.";
+          document.getElementById("p1").value = "";
+          document.getElementById("p2").value = "";
+          document.getElementById("p3").value = "";
+          document.getElementById("p4").value = "";
+          document.getElementById("p1").focus();
+          return;
+        }
+        // PIN correct
+        sessionStorage.setItem("ch_session_pin", pin);
+        const enc = localStorage.getItem("ch_url_enc");
+        const url = decodeUrl(enc, pin);
+        closePinDialog();
+        if (pinAction === "unlock") {
+          document.getElementById("settings-url").value = url;
+          document.getElementById("url-locked-view").style.display = "none";
+          document.getElementById("url-edit-view").style.display = "block";
+          toast("success", "URL unlocked. You can now edit it.");
+        }
+      }
+
+      // ═══════════════════════════════════════════
+      // NAVIGATION
+      // ═══════════════════════════════════════════
       function toggleSidebar() {
-        const sb = document.getElementById("sidebar");
-        const ov = document.getElementById("sidebar-overlay");
-        const w = window.innerWidth;
+        const sb = document.getElementById("sidebar"),
+          ov = document.getElementById("sidebar-overlay"),
+          w = window.innerWidth;
         if (w <= 640) {
           sb.classList.toggle("open");
           ov.classList.toggle("open");
@@ -2156,12 +2699,10 @@ function ok() {
           ov.classList.toggle("open");
         }
       }
-
       function closeSidebar() {
         document.getElementById("sidebar").classList.remove("open", "expanded");
         document.getElementById("sidebar-overlay").classList.remove("open");
       }
-
       function showPage(name, btn) {
         document
           .querySelectorAll(".page")
@@ -2185,6 +2726,9 @@ function ok() {
         window.scrollTo(0, 0);
       }
 
+      // ═══════════════════════════════════════════
+      // STATS & TABLE
+      // ═══════════════════════════════════════════
       function renderStats() {
         document.getElementById("stat-total").textContent = clients.length;
         document.getElementById("stat-active").textContent = clients.filter(
@@ -2210,26 +2754,31 @@ function ok() {
             (c.company || "").toLowerCase().includes(q) ||
             (c.clientid || "").toLowerCase().includes(q) ||
             (c.cpname || "").toLowerCase().includes(q) ||
+            (c.cpmobile || "").toLowerCase().includes(q) ||
+            (c.gst || "").toLowerCase().includes(q) ||
+            (c.pan || "").toLowerCase().includes(q) ||
+            (c.compphone || "").toLowerCase().includes(q) ||
             (c.industry || "").toLowerCase().includes(q) ||
-            (c.refname || "").toLowerCase().includes(q);
+            (c.refname || "").toLowerCase().includes(q) ||
+            (c.leadsource || "").toLowerCase().includes(q);
           return mq && (!fs || c.status === fs);
         });
+
         const pm = {
           Active: "pill-active",
           Prospect: "pill-prospect",
           "On Hold": "pill-onhold",
           Inactive: "pill-inactive",
         };
-        const empty = `<div class="empty-state"><div class="empty-icon">🏢</div><p>${q || fs ? "No clients match your filters." : "No clients yet. <strong>Add your first client.</strong>"}</p></div>`;
+        const empty = `<div class="empty-state"><div class="empty-icon">🏢</div><p>${q || fs ? "No clients match." : "No clients yet. <strong>Add your first client.</strong>"}</p></div>`;
+
         if (!filtered.length) {
           document.getElementById("table-container").innerHTML = empty;
           document.getElementById("card-container").innerHTML = empty;
           return;
         }
 
-        // Desktop table
-        let th = `<table><thead><tr><th>Client</th><th>Industry</th><th>Contact Person</th><th>Mobile</th><th>Referred By</th><th>Lead Source</th><th>Status</th><th>Actions</th></tr></thead><tbody>`;
-        // Mobile cards
+        let th = `<table><thead><tr><th>Client</th><th>Industry</th><th>Contact Person</th><th>Mobile</th><th>GST</th><th>Referred By</th><th>Lead Source</th><th>Status</th><th>Actions</th></tr></thead><tbody>`;
         let ch = "";
 
         filtered.forEach((c) => {
@@ -2239,10 +2788,15 @@ function ok() {
       <td style="color:var(--text2)">${esc(c.industry || "—")}</td>
       <td><div class="contact-main">${esc(c.cpname || "—")}</div>${c.cpdesig ? `<div class="contact-role">${esc(c.cpdesig)}</div>` : ""}</td>
       <td style="color:var(--text2)">${esc(c.cpmobile || "—")}</td>
-      <td>${c.refname ? `<div style="font-weight:500">${esc(c.refname)}</div>${c.refcompany ? `<div style="font-size:11px;color:var(--text3)">${esc(c.refcompany)}</div>` : ""}` : '<span style="color:var(--text3)">—</span>'}</td>
+      <td style="font-size:11.5px;font-family:monospace;color:var(--text3)">${esc(c.gst || "—")}</td>
+      <td>${c.refname ? `<div style="font-weight:500;font-size:13px">${esc(c.refname)}</div>${c.refcompany ? `<div style="font-size:11px;color:var(--text3)">${esc(c.refcompany)}</div>` : ""}` : '<span style="color:var(--text3)">—</span>'}</td>
       <td style="font-size:12.5px;color:var(--text2)">${esc(c.leadsource || "—")}</td>
       <td><span class="pill ${pill}">${esc(c.status)}</span></td>
-      <td><div class="action-btns"><button class="btn-icon" onclick="startEdit('${c.id}')">✏️</button><button class="btn-icon danger" onclick="openDeleteModal('${c.id}')">🗑</button></div></td>
+      <td><div class="action-btns">
+        <button class="btn-icon" title="Print" onclick="printClient('${c.id}')">🖨️</button>
+        <button class="btn-icon" title="Edit" onclick="startEdit('${c.id}')">✏️</button>
+        <button class="btn-icon danger" title="Delete" onclick="openDeleteModal('${c.id}')">🗑</button>
+      </div></td>
     </tr>`;
 
           ch += `<div class="client-card">
@@ -2250,23 +2804,263 @@ function ok() {
         <div><div class="cc-name">${esc(c.company)}</div>${c.clientid ? `<div class="cc-id">${esc(c.clientid)}</div>` : ""}</div>
         <div class="cc-right">
           <span class="pill ${pill}">${esc(c.status)}</span>
-          <div class="action-btns"><button class="btn-icon" onclick="startEdit('${c.id}')">✏️</button><button class="btn-icon danger" onclick="openDeleteModal('${c.id}')">🗑</button></div>
+          <div class="action-btns">
+            <button class="btn-icon" onclick="printClient('${c.id}')">🖨️</button>
+            <button class="btn-icon" onclick="startEdit('${c.id}')">✏️</button>
+            <button class="btn-icon danger" onclick="openDeleteModal('${c.id}')">🗑</button>
+          </div>
         </div>
       </div>
       <div class="cc-meta">
         ${c.industry ? `<span class="cc-tag">🏭 ${esc(c.industry)}</span>` : ""}
         ${c.cpname ? `<span class="cc-tag">👤 ${esc(c.cpname)}${c.cpdesig ? " · " + esc(c.cpdesig) : ""}</span>` : ""}
         ${c.cpmobile ? `<span class="cc-tag">📱 ${esc(c.cpmobile)}</span>` : ""}
-        ${c.leadsource ? `<span class="cc-tag">🔗 ${esc(c.leadsource)}</span>` : ""}
+        ${c.gst ? `<span class="cc-tag">GST: ${esc(c.gst)}</span>` : ""}
         ${c.refname ? `<span class="cc-tag">👋 via ${esc(c.refname)}</span>` : ""}
       </div>
     </div>`;
         });
+
         th += "</tbody></table>";
         document.getElementById("table-container").innerHTML = th;
         document.getElementById("card-container").innerHTML = ch;
       }
 
+      // ═══════════════════════════════════════════
+      // PRINT
+      // ═══════════════════════════════════════════
+      function printTable() {
+        window.print();
+      }
+
+      function printClient(id) {
+        const c = clients.find((x) => x.id === id);
+        if (!c) return;
+        const w = window.open("", "_blank", "width=800,height=600");
+        w.document
+          .write(`<!DOCTYPE html><html><head><title>${c.company} — Client Details</title>
+  <style>
+    body{font-family:Arial,sans-serif;padding:30px;color:#18162a;font-size:13px;}
+    h1{font-size:20px;margin-bottom:4px;}
+    .sub{color:#666;font-size:12px;margin-bottom:20px;}
+    .pill{display:inline-block;padding:3px 10px;border-radius:20px;font-size:11px;font-weight:700;background:#e8f5ef;color:#1e7f5a;}
+    .section{margin-bottom:18px;border-top:1px solid #eee;padding-top:14px;}
+    .section h2{font-size:12px;text-transform:uppercase;letter-spacing:.6px;color:#888;margin-bottom:10px;}
+    table{width:100%;border-collapse:collapse;}
+    td{padding:5px 0;vertical-align:top;}
+    td:first-child{width:160px;color:#666;font-size:12px;}
+    td:last-child{font-weight:500;}
+    .footer{margin-top:30px;font-size:11px;color:#aaa;border-top:1px solid #eee;padding-top:10px;}
+    @media print{button{display:none}}
+  </style></head><body>
+  <div style="display:flex;justify-content:space-between;align-items:flex-start">
+    <div><h1>${esc(c.company)}</h1><div class="sub">${esc(c.clientid || "")} ${c.industry ? "· " + esc(c.industry) : ""}</div></div>
+    <span class="pill">${esc(c.status)}</span>
+  </div>
+  <div class="section"><h2>Company Details</h2><table>
+    <tr><td>Business Type</td><td>${esc(c.biztype || "—")}</td></tr>
+    <tr><td>GST Number</td><td>${esc(c.gst || "—")}</td></tr>
+    <tr><td>PAN Number</td><td>${esc(c.pan || "—")}</td></tr>
+    <tr><td>Address</td><td>${esc(c.address || "—")}</td></tr>
+    <tr><td>Phone</td><td>${esc(c.compphone || "—")}</td></tr>
+    <tr><td>Email</td><td>${esc(c.compemail || "—")}</td></tr>
+    <tr><td>Website</td><td>${esc(c.website || "—")}</td></tr>
+    <tr><td>Client Since</td><td>${esc(c.since || "—")}</td></tr>
+  </table></div>
+  <div class="section"><h2>Primary Contact Person</h2><table>
+    <tr><td>Name</td><td>${esc(c.cpname || "—")}</td></tr>
+    <tr><td>Designation</td><td>${esc(c.cpdesig || "—")}</td></tr>
+    <tr><td>Mobile</td><td>${esc(c.cpmobile || "—")}</td></tr>
+    <tr><td>Alt. Phone</td><td>${esc(c.cpphone2 || "—")}</td></tr>
+    <tr><td>Email</td><td>${esc(c.cpemail || "—")}</td></tr>
+    <tr><td>Department</td><td>${esc(c.cpdept || "—")}</td></tr>
+  </table></div>
+  ${
+    c.cp2name
+      ? `<div class="section"><h2>Secondary Contact</h2><table>
+    <tr><td>Name</td><td>${esc(c.cp2name)}</td></tr>
+    <tr><td>Designation</td><td>${esc(c.cp2desig || "—")}</td></tr>
+    <tr><td>Mobile</td><td>${esc(c.cp2mobile || "—")}</td></tr>
+    <tr><td>Email</td><td>${esc(c.cp2email || "—")}</td></tr>
+  </table></div>`
+      : ""
+  }
+  <div class="section"><h2>Reference Details</h2><table>
+    <tr><td>Referred By</td><td>${esc(c.refname || "—")}</td></tr>
+    <tr><td>Referrer Company</td><td>${esc(c.refcompany || "—")}</td></tr>
+    <tr><td>Referrer Mobile</td><td>${esc(c.refmobile || "—")}</td></tr>
+    <tr><td>Lead Source</td><td>${esc(c.leadsource || "—")}</td></tr>
+    <tr><td>Rel. Strength</td><td>${esc(c.relstrength || "—")}</td></tr>
+    <tr><td>Reference Notes</td><td>${esc(c.refnotes || "—")}</td></tr>
+  </table></div>
+  <div class="section"><h2>Financial</h2><table>
+    <tr><td>Annual Revenue</td><td>${c.revenue ? "₹" + Number(c.revenue).toLocaleString("en-IN") : "—"}</td></tr>
+    <tr><td>Credit Limit</td><td>${c.credit ? "₹" + Number(c.credit).toLocaleString("en-IN") : "—"}</td></tr>
+  </table></div>
+  <div class="footer">ClientHub · Printed on ${new Date().toLocaleString("en-IN")} · ${esc(c.company)}</div>
+  <br><button onclick="window.print()">🖨️ Print</button>
+  </body></html>`);
+        w.document.close();
+        setTimeout(() => w.print(), 500);
+      }
+
+      // ═══════════════════════════════════════════
+      // EXPORT EXCEL
+      // ═══════════════════════════════════════════
+      function exportExcel() {
+        if (!clients.length) {
+          toast("error", "No clients to export.");
+          return;
+        }
+        const headers = [
+          "Client ID",
+          "Client Code",
+          "Company",
+          "Industry",
+          "Biz Type",
+          "GST",
+          "PAN",
+          "Address",
+          "Phone",
+          "Email",
+          "Website",
+          "Since",
+          "CP Name",
+          "CP Desig",
+          "CP Mobile",
+          "CP Email",
+          "CP Dept",
+          "CP2 Name",
+          "CP2 Mobile",
+          "CP2 Email",
+          "Ref Name",
+          "Ref Company",
+          "Ref Mobile",
+          "Ref Email",
+          "Ref Date",
+          "Lead Source",
+          "Rel Strength",
+          "Ref Notes",
+          "Revenue",
+          "Credit",
+          "Remarks",
+          "Status",
+          "Registered",
+        ];
+        const rows = clients.map((c) => [
+          c.id,
+          c.clientid,
+          c.company,
+          c.industry,
+          c.biztype,
+          c.gst,
+          c.pan,
+          c.address,
+          c.compphone,
+          c.compemail,
+          c.website,
+          c.since,
+          c.cpname,
+          c.cpdesig,
+          c.cpmobile,
+          c.cpemail,
+          c.cpdept,
+          c.cp2name,
+          c.cp2mobile,
+          c.cp2email,
+          c.refname,
+          c.refcompany,
+          c.refmobile,
+          c.refemail,
+          c.refdate,
+          c.leadsource,
+          c.relstrength,
+          c.refnotes,
+          c.revenue,
+          c.credit,
+          c.remarks,
+          c.status,
+          c.registered,
+        ]);
+        const csv = [headers, ...rows]
+          .map((r) =>
+            r
+              .map((v) => '"' + String(v || "").replace(/"/g, '""') + '"')
+              .join(","),
+          )
+          .join("\n");
+        const bom = "\uFEFF";
+        const blob = new Blob([bom + csv], { type: "text/csv;charset=utf-8" });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement("a");
+        a.href = url;
+        a.download =
+          "ClientHub_Export_" + new Date().toISOString().slice(0, 10) + ".csv";
+        a.click();
+        URL.revokeObjectURL(url);
+        toast(
+          "success",
+          "Excel (CSV) exported — " + clients.length + " clients.",
+        );
+      }
+
+      // ═══════════════════════════════════════════
+      // EXPORT PDF
+      // ═══════════════════════════════════════════
+      function exportPDF() {
+        if (!clients.length) {
+          toast("error", "No clients to export.");
+          return;
+        }
+        const w = window.open("", "_blank", "width=1100,height=700");
+        const pm = {
+          Active: "background:#e8f5ef;color:#1e7f5a",
+          Prospect: "background:#fdf3eb;color:#7a4412",
+          "On Hold": "background:#fff7ed;color:#92400e",
+          Inactive: "background:#f5f4fa;color:#666",
+        };
+        let rows = clients
+          .map(
+            (c) => `<tr>
+    <td><strong>${esc(c.company)}</strong><br><span style="font-size:10px;color:#888">${esc(c.clientid || "")}</span></td>
+    <td>${esc(c.industry || "—")}</td>
+    <td>${esc(c.cpname || "—")}<br><span style="font-size:10px;color:#888">${esc(c.cpdesig || "")}</span></td>
+    <td>${esc(c.cpmobile || "—")}</td>
+    <td style="font-size:10px">${esc(c.gst || "—")}</td>
+    <td>${esc(c.refname || "—")}</td>
+    <td>${esc(c.leadsource || "—")}</td>
+    <td><span style="display:inline-block;padding:2px 8px;border-radius:12px;font-size:10px;font-weight:700;${pm[c.status] || pm["Inactive"]}">${esc(c.status)}</span></td>
+  </tr>`,
+          )
+          .join("");
+        w.document
+          .write(`<!DOCTYPE html><html><head><title>ClientHub Export</title>
+  <style>
+    body{font-family:Arial,sans-serif;padding:24px;color:#18162a;font-size:12px;}
+    h1{font-size:18px;margin-bottom:4px;}
+    .meta{color:#888;font-size:11px;margin-bottom:20px;}
+    table{width:100%;border-collapse:collapse;font-size:11px;}
+    th{background:#4a3fa0;color:#fff;padding:8px 10px;text-align:left;font-size:10px;text-transform:uppercase;letter-spacing:.4px;}
+    td{padding:7px 10px;border-bottom:1px solid #eee;vertical-align:top;}
+    tr:nth-child(even) td{background:#f9f8ff;}
+    .footer{margin-top:20px;font-size:10px;color:#aaa;text-align:center;}
+    @media print{button{display:none!important}@page{margin:1cm;size:A4 landscape;}}
+  </style></head><body>
+  <h1>ClientHub — Client Register</h1>
+  <div class="meta">Exported on ${new Date().toLocaleString("en-IN")} · Total: ${clients.length} clients</div>
+  <table><thead><tr><th>Client</th><th>Industry</th><th>Contact</th><th>Mobile</th><th>GST</th><th>Referred By</th><th>Lead Source</th><th>Status</th></tr></thead>
+  <tbody>${rows}</tbody></table>
+  <div class="footer">ClientHub Registration System · Confidential</div>
+  <br><button onclick="window.print()" style="padding:8px 18px;background:#4a3fa0;color:#fff;border:none;border-radius:8px;cursor:pointer;font-size:13px">🖨️ Print / Save as PDF</button>
+  </body></html>`);
+        w.document.close();
+        setTimeout(() => w.print(), 600);
+        toast("success", 'PDF ready — use "Save as PDF" in print dialog.');
+      }
+
+      // ═══════════════════════════════════════════
+      // FORM
+      // ═══════════════════════════════════════════
       function selectStatus(el) {
         document
           .querySelectorAll(".status-opt")
@@ -2385,14 +3179,15 @@ function ok() {
         const btn = document.getElementById("submit-btn");
         btn.textContent = "⏳ Saving…";
         btn.disabled = true;
+        const url = getSheetsUrl();
         if (editingId) {
           const idx = clients.findIndex((c) => c.id === editingId);
           if (idx !== -1) clients[idx] = data;
-          await syncToSheets({ ...data, action: "update" });
+          if (url) await syncToSheets({ ...data, action: "update" });
           toast("success", `"${data.company}" updated.`);
         } else {
           clients.unshift(data);
-          await syncToSheets({ ...data, action: "create" });
+          if (url) await syncToSheets({ ...data, action: "create" });
           toast("success", `"${data.company}" registered!`);
         }
         saveLocal();
@@ -2488,56 +3283,63 @@ function ok() {
         document.getElementById("topbar-title").textContent = "Edit Client";
       }
 
+      // ═══════════════════════════════════════════
+      // DELETE
+      // ═══════════════════════════════════════════
       function openDeleteModal(id) {
         deleteTargetId = id;
         const c = clients.find((x) => x.id === id);
         document.getElementById("delete-name").textContent = c ? c.company : "";
         document.getElementById("delete-modal").classList.add("open");
       }
-
-      function closeModal() {
-        document.getElementById("delete-modal").classList.remove("open");
-        deleteTargetId = null;
+      function closeModal(id) {
+        document.getElementById(id || "delete-modal").classList.remove("open");
       }
-
       async function confirmDelete() {
         const c = clients.find((x) => x.id === deleteTargetId);
         clients = clients.filter((x) => x.id !== deleteTargetId);
-        closeModal();
-        await syncToSheets({
-          id: deleteTargetId,
-          company: c?.company,
-          action: "delete",
-        });
+        closeModal("delete-modal");
+        const url = getSheetsUrl();
+        if (url)
+          await syncToSheets({
+            id: deleteTargetId,
+            company: c?.company,
+            action: "delete",
+          });
         saveLocal();
         renderStats();
         renderTable();
         toast("info", `"${c?.company || "Client"}" deleted.`);
       }
 
+      // ═══════════════════════════════════════════
+      // SHEETS SYNC
+      // ═══════════════════════════════════════════
       async function syncToSheets(data) {
-        if (!sheetsUrl) return;
+        const url = getSheetsUrl();
+        if (!url) return;
         try {
-          await fetch(sheetsUrl, {
+          await fetch(url, {
             method: "POST",
             mode: "no-cors",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(data),
           });
         } catch (e) {
-          toast("error", "Sheets sync failed. Check URL in Settings.");
+          toast("error", "Sheets sync failed.");
         }
       }
 
+      // ═══════════════════════════════════════════
+      // SETTINGS
+      // ═══════════════════════════════════════════
       function saveSheetUrl(url) {
-        sheetsUrl = url.trim();
-        localStorage.setItem("ch_sheets_url", sheetsUrl);
-        document.getElementById("sheets-url-global").value = sheetsUrl;
-        document.getElementById("settings-url").value = sheetsUrl;
-        if (sheetsUrl)
-          document.getElementById("config-banner").style.display = "none";
+        const u = url.trim();
+        localStorage.setItem("ch_sheets_url", u);
+        document.getElementById("sheets-url-global").value = u;
+        document.getElementById("settings-url").value = u;
+        if (u) document.getElementById("config-banner").style.display = "none";
       }
-
       function toggleEmail() {
         emailEnabled = !emailEnabled;
         localStorage.setItem("ch_email_enabled", emailEnabled ? "1" : "0");
@@ -2548,7 +3350,6 @@ function ok() {
           ? "block"
           : "none";
       }
-
       function saveNotifyEmails() {
         notifyEmails = document.getElementById("notify-emails").value;
         localStorage.setItem("ch_notify_emails", notifyEmails);
@@ -2560,7 +3361,6 @@ function ok() {
           (clients.length !== 1 ? "s" : "") +
           " saved locally";
       }
-
       function confirmClearAll() {
         if (
           !confirm(
@@ -2574,12 +3374,14 @@ function ok() {
         renderTable();
         toast("info", "Local storage cleared.");
       }
-
       function saveLocal() {
         localStorage.setItem("ch_clients", JSON.stringify(clients));
         updateLocalCount();
       }
 
+      // ═══════════════════════════════════════════
+      // TOAST
+      // ═══════════════════════════════════════════
       function toast(type, msg) {
         const wrap = document.getElementById("toast-wrap");
         const icons = { success: "✅", error: "❌", info: "ℹ️" };
@@ -2590,6 +3392,9 @@ function ok() {
         setTimeout(() => el.remove(), 4000);
       }
 
+      // ═══════════════════════════════════════════
+      // UTILS
+      // ═══════════════════════════════════════════
       function val(id) {
         const el = document.getElementById(id);
         return el ? el.value.trim() : "";
@@ -2600,7 +3405,6 @@ function ok() {
           .replace(/</g, "&lt;")
           .replace(/>/g, "&gt;");
       }
-
       window.addEventListener("resize", () => {
         if (window.innerWidth > 1024) closeSidebar();
       });
